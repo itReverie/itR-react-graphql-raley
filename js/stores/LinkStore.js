@@ -26,6 +26,10 @@ class LinkStore extends EventEmitter
     });
   }
 
+  getAll(){
+    return _links;
+  }
+
 
 }
 
