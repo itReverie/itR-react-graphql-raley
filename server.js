@@ -11,7 +11,8 @@ let app = express();
 app.use(express.static('public'));
 
 app.use('/graphql', GraphQLHTTP({
-  schema
+  schema,
+  graphiql: true
 }));
 
 //This is an option to keep the db obfuscated
