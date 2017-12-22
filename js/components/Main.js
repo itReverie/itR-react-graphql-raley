@@ -9,15 +9,19 @@ let _getAppState = () => {
 };
 
 
-//
-export default class Main extends React.Component {
 
- constructor (props){
-   super(props);
-   this.state=_getAppState();
-   this.onChange= this.onChange.bind(this);
- }
+class Main extends React.Component {
 
+ //Static properties that need some babel configuration
+  static propTypes = {
+    limit: PropTypes.number.isRequired
+  }
+
+  static defaultProps = {
+    limit:3
+  }
+
+  state=_getAppState();
 
   //after the UI is rendered
   componentDidMount(){
@@ -31,9 +35,8 @@ export default class Main extends React.Component {
     LinkStore.removeListener("change", this.onChange);
   }
 
-  //onChange event
-  onChange(){
-    console.log("4. In the View");
+  //onChange event can now be a preperty so now we don't need manual binding
+  onChange=()=>{
     this.setState(_getAppState());
   }
 
@@ -49,16 +52,11 @@ return (
         <h3>Links</h3>
     <ul>
         {content}
-    </ul>
-</div>);
+    </ul></div>);
 
   }
 }
 
-Main.propTypes = {
-  limit: PropTypes.number.isRequired
-}
 
-Main.defaultProps = {
-  limit:3
-}
+
+export default Main;

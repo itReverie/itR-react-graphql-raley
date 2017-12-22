@@ -20281,26 +20281,33 @@
 	  return { links: _LinkStore2.default.getAll() };
 	};
 	
-	//
-	
 	var Main = function (_React$Component) {
 	  _inherits(Main, _React$Component);
 	
-	  function Main(props) {
+	  function Main() {
+	    var _ref;
+	
+	    var _temp, _this, _ret;
+	
 	    _classCallCheck(this, Main);
 	
-	    var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this, props));
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
 	
-	    _this.state = _getAppState();
-	    _this.onChange = _this.onChange.bind(_this);
-	    return _this;
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Main.__proto__ || Object.getPrototypeOf(Main)).call.apply(_ref, [this].concat(args))), _this), _this.state = _getAppState(), _this.onChange = function () {
+	      _this.setState(_getAppState());
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 	
-	  //after the UI is rendered
+	  //Static properties that need some babel configuration
 	
 	
 	  _createClass(Main, [{
 	    key: "componentDidMount",
+	
+	
+	    //after the UI is rendered
 	    value: function componentDidMount() {
 	      _API2.default.fetchLinks();
 	      //register a listener to teh store emmiter
@@ -20315,14 +20322,8 @@
 	      _LinkStore2.default.removeListener("change", this.onChange);
 	    }
 	
-	    //onChange event
+	    //onChange event can now be a preperty so now we don't need manual binding
 	
-	  }, {
-	    key: "onChange",
-	    value: function onChange() {
-	      console.log("4. In the View");
-	      this.setState(_getAppState());
-	    }
 	  }, {
 	    key: "render",
 	    value: function render() {
@@ -20359,16 +20360,13 @@
 	  return Main;
 	}(_react2.default.Component);
 	
-	exports.default = Main;
-	
-	
 	Main.propTypes = {
 	  limit: _propTypes2.default.number.isRequired
 	};
-	
 	Main.defaultProps = {
 	  limit: 3
 	};
+	exports.default = Main;
 
 /***/ }),
 /* 160 */
