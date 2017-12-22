@@ -20384,9 +20384,11 @@
 	
 	    //Read teh data with an Ajax call
 	    //Ajax request to read /data/Links
-	    (0, _jquery.get)("/links/links").done(function (resp) {
+	    (0, _jquery.post)("/graphql", {
+	      query: "{links{_id,title,url}}"
+	    }).done(function (resp) {
 	      console.log(resp);
-	      _ServerActions2.default.receiveLinks(resp);
+	      _ServerActions2.default.receiveLinks(resp.data.links);
 	    });
 	  }
 	};
