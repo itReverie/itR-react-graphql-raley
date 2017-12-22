@@ -1,6 +1,7 @@
 import React from "react";
 import API from "../API";
 import LinkStore from "../stores/LinkStore";
+import PropTypes from "prop-types";
 
 //Useful variable that will retrieve the current state for the links
 let _getAppState = () => {
@@ -38,7 +39,7 @@ export default class Main extends React.Component {
 
   render() {
 
-let content = this.state.links.map(link => {
+let content = this.state.links.slice(0, this.props.limit).map(link => {
   return  <li key={link._id}>
           <a href={link.url} target="_blank">{link.title}</a>
           </li>;});
@@ -52,4 +53,12 @@ return (
 </div>);
 
   }
+}
+
+Main.propTypes = {
+  limit: PropTypes.number.isRequired
+}
+
+Main.defaultProps = {
+  limit:3
 }

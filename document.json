@@ -1,3 +1,10 @@
-[{"id": 1, "title": "itR flexbox", "url":"https://github.com/itReverie/itR-flexbox-grid"},
-  {"id": 2, "title": "itR react redux", "url":"https://github.com/itReverie/itR-react-redux"},
-  {"id": 3, "title": "itR react redux", "url":"https://github.com/itReverie/itR-react-cryptocurrencies"}]
+[
+{"title": "itR flexbox", "url":"https://github.com/itReverie/itR-flexbox-grid"},
+{"title": "itR react redux", "url":"https://github.com/itReverie/itR-react-redux"},
+{"title": "itR-web-WebCrawler", "url":"https://github.com/itReverie/itR-web-WebCrawler"}
+{"title": "itR-app-android-Weather", "url":"https://github.com/itReverie/itR-app-android-Weather"}
+{"title": "itR-web-bootstrap-Hotel", "url":"https://github.com/itReverie/itR-web-bootstrap-Hotel"}
+{"title": "itR-flexbox-grid", "url":"https://github.com/itReverie/itR-flexbox-grid"}
+{"title": "itR-react-advance", "url":"https://github.com/itReverie/itR-react-advance"}
+{"title": "itR-react-cryptocurrencies", "url":"https://github.com/itReverie/itR-react-cryptocurrencies"}
+{"title": "Algorithms", "url":"https://github.com/itReverie/Algorithms"}]
