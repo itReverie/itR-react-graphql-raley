@@ -1,7 +1,10 @@
+import fs from 'fs';
 import express from 'express';
-import schema from './data/schema';
+import Schema from './data/schema';
 import GraphQLHTTP from 'express-graphql';
 import { MongoClient} from 'mongodb';
+import {graphql} from 'graphql';
+import {introspectionQuery} from 'graphql/utilities';
 
 let app = express();
 
@@ -14,39 +17,30 @@ let connection="mongodb://brenda.levvel10:brenda.levvel10@ds161146.mlab.com:6114
 //We converted our aynchronous call to mongo into an ****AsyncAwait*** feature
 (async()=> {
 let db= await MongoClient.connect(connection);
+let schema= Schema(db.db("links"));
 
     //Passing the connected db variabel as an argument
     //I will have access to my mongo DB in our Graph ql schema
     app.use('/graphql', GraphQLHTTP({
-      schema: schema(db.db("links")),
+      schema: schema,
       graphiql: true
     }));
 
     app.listen(3000, () => console.log('Listening on port 3000'));
 
+
+
+
+// //This will probably not be the best place to set up the schema as it will be updated everytime we start the server
+// //We will leave it here to keep it simple in this case
+// //Generate a Schema
+// let json= await graphql(schema, introspectionQuery); //this is an async call hence we just add the await
+//
+// //We are writing this json to a file
+// fs.writeFile('./data/schema.json', JSON.stringify(json, null, 2), err =>{
+//   if(err) throw err;
+//
+//   console.log("JSON schema created");
+// });
+
 })();
-
-
-// let myDb;
-// MongoClient.connect( connection, (err, database) => {
-//     if(err) throw err;
-//
-//     myDb=database.db("links");
-//
-//     XXXXXXX
-//
-// });
-
-
-
-
-
-
-//Replacing this section with *****Graphql**** instead of retrieving them directly
-// app.get("/links/links", (req, res) => {
-//     myDb.collection("links").find({}).toArray((err, links) => {
-//         if(err)throw err;
-//
-//         res.json(links);
-//     });
-// });
