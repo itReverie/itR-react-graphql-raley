@@ -33,9 +33,10 @@
     "kerberos": "0.0.23",
     "mongodb": "^3.0.0-rc0",
     "prop-types": "^15.6.0",
-    "react": "^0.14.3",
-    "react-dom": "^0.14.3",
+    "react": "^16.0.0",
+    "react-dom": "^16.1.1",
     "react-relay": "^1.4.1",
+    "relay-compiler": "^1.4.1",
     "webpack": "^1.15.0"
   }
 }
